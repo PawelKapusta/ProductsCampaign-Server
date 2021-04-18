@@ -1,0 +1,57 @@
+[
+  {
+    "id": "174flwknkdwtq5",
+    "name": "Product1",
+    "campaign": "Campaign1",
+    "keywords": "keywords1",
+    "bidAmount": 200,
+    "campaignFund": 600,
+    "status": "on",
+    "town": "Kraków",
+    "radius": 6
+  },
+  {
+    "id": "174flwknkdwtq3",
+    "name": "Product2",
+    "campaign": "Campaign2",
+    "keywords": "keywords2",
+    "bidAmount": 100,
+    "campaignFund": 600,
+    "status": "on",
+    "town": "Rzeszów",
+    "radius": 15
+  },
+  {
+    "id": "174gxsknkdx692",
+    "name": "Product3",
+    "campaign": "Campaign3",
+    "keywords": "keywords3",
+    "bidAmount": 150,
+    "campaignFund": 700,
+    "status": "on",
+    "town": "Wrocław",
+    "radius": 20
+  },
+  {
+    "id": "3bw52ocknncgh11",
+    "name": "Product4",
+    "campaign": "Campaign4",
+    "keywords": "keywords4",
+    "bidAmount": 100,
+    "campaignFund": 1000,
+    "status": "off",
+    "town": "Gdańsk",
+    "radius": 12
+  },
+  {
+    "id": "3bw5iv8knngp57s",
+    "name": "Product5",
+    "campaign": "Campaign4",
+    "keywords": "keywords4",
+    "bidAmount": 100,
+    "campaignFund": 1000,
+    "status": "off",
+    "town": "Gdańsk",
+    "radius": 12
+  }
+]
