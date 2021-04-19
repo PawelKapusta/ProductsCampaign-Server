@@ -4,9 +4,8 @@ const cors = require('cors');
 const app = express();
 const fs = require('fs'); // I'll load up node's built in file system helper library here
 
-app.set("trust proxy", 1);
-
 app.use(cors())
+app.set("trust proxy", 1);
 app.use(bodyParser.json());
 app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
