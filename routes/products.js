@@ -33,6 +33,7 @@ const productsRouter = (app, fs) => {
       res.send(data);
     }, true);
   });
+
   app.get('/products/:id', (req, res) => {
     readFile((data) => {
       const productId = req.params['id'];
@@ -48,6 +49,7 @@ const productsRouter = (app, fs) => {
         '{name: String, campaign: String,keywords: String, bidAmount: Number, campaignFund: Number, status: String, town: String, radius: Number}',
         req.body,
       );
+
       if (isReqDataTypesCorrect) {
         const newProduct = {
           id: uniqid(),
@@ -78,6 +80,7 @@ const productsRouter = (app, fs) => {
         '{name: String, campaign: String, keywords: String, bidAmount: Number, campaignFund: Number, status: String, town: String, radius: Number}',
         req.body,
       );
+
       if (isReqDataTypesCorrect) {
         const updatedProduct = {
           id: productId,
@@ -90,12 +93,10 @@ const productsRouter = (app, fs) => {
           town: town,
           radius: radius,
         };
-        for (let i = 0; i < data.length; i++) {
-          if (data[i].id === productId) {
-            data[i] = updatedProduct;
-            break;
-          }
-        }
+
+        const updatedElementIndex = data.findIndex((element) => element.id === productId);
+        data[updatedElementIndex] = updatedProduct;
+
         writeFile(JSON.stringify(data, null, 2), () => {
           res.status(200).send(`Product id:${productId} updated`);
         });
