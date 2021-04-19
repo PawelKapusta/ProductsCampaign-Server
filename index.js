@@ -10,6 +10,8 @@ app.use(bodyParser.json({ limit: '30mb', extended: true }));
 app.use(bodyParser.urlencoded({ limit: '30mb', extended: true }));
 const routes = require('./routes/products.js')(app, fs);
 
-const index = app.listen(5001, () => {
+const PORT = process.env.PORT || 5001;
+
+const index = app.listen(PORT, () => {
   console.log('Listening on port %s...', index.address().port);
 });
