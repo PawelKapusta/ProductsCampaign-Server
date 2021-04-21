@@ -45,30 +45,22 @@ const productsRouter = (app, fs) => {
   app.post('/products', (req, res) => {
     readFile((data) => {
       const { name, campaign, keywords, bidAmount, campaignFund, status, town, radius } = req.body;
-      const isReqDataTypesCorrect = typeCheck(
-        '{name: String, campaign: String,keywords: String, bidAmount: Number, campaignFund: Number, status: String, town: String, radius: Number}',
-        req.body,
-      );
-
-      if (isReqDataTypesCorrect) {
-        const newProduct = {
-          id: uniqid(),
-          name: name,
-          campaign: campaign,
-          keywords: keywords,
-          bidAmount: bidAmount,
-          campaignFund: campaignFund,
-          status: status,
-          town: town,
-          radius: radius,
-        };
-        data.push(newProduct);
-        writeFile(JSON.stringify(data, null, 2), () => {
-          res.status(200).send('New product added successfully');
-        });
-      } else {
-        res.status(400).send('Data types are not correct, please check it one more time');
-      }
+      console.log(req.body);
+      const newProduct = {
+        id: uniqid(),
+        name: name,
+        campaign: campaign,
+        keywords: keywords,
+        bidAmount: bidAmount,
+        campaignFund: campaignFund,
+        status: status,
+        town: town,
+        radius: radius,
+      };
+      data.push(newProduct);
+      writeFile(JSON.stringify(data, null, 2), () => {
+        res.status(200).send('New product added successfully');
+      });
     }, true);
   });
 
@@ -76,33 +68,24 @@ const productsRouter = (app, fs) => {
     readFile((data) => {
       const productId = req.params['id'];
       const { name, campaign, keywords, bidAmount, campaignFund, status, town, radius } = req.body;
-      const isReqDataTypesCorrect = typeCheck(
-        '{name: String, campaign: String, keywords: String, bidAmount: Number, campaignFund: Number, status: String, town: String, radius: Number}',
-        req.body,
-      );
+      const updatedProduct = {
+        id: productId,
+        name: name,
+        campaign: campaign,
+        keywords: keywords,
+        bidAmount: bidAmount,
+        campaignFund: campaignFund,
+        status: status,
+        town: town,
+        radius: radius,
+      };
 
-      if (isReqDataTypesCorrect) {
-        const updatedProduct = {
-          id: productId,
-          name: name,
-          campaign: campaign,
-          keywords: keywords,
-          bidAmount: bidAmount,
-          campaignFund: campaignFund,
-          status: status,
-          town: town,
-          radius: radius,
-        };
+      const updatedElementIndex = data.findIndex((element) => element.id === productId);
+      data[updatedElementIndex] = updatedProduct;
 
-        const updatedElementIndex = data.findIndex((element) => element.id === productId);
-        data[updatedElementIndex] = updatedProduct;
-
-        writeFile(JSON.stringify(data, null, 2), () => {
-          res.status(200).send(`Product id:${productId} updated`);
-        });
-      } else {
-        res.status(400).send('Data types are not correct, please check it one more time');
-      }
+      writeFile(JSON.stringify(data, null, 2), () => {
+        res.status(200).send(`Product id:${productId} updated`);
+      });
     }, true);
   });
 

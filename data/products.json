@@ -42,16 +42,5 @@
     "status": "off",
     "town": "Gdańsk",
     "radius": 12
-  },
-  {
-    "id": "3bw5iv8knngp57s",
-    "name": "Product5",
-    "campaign": "Campaign4",
-    "keywords": "keywords4",
-    "bidAmount": 100,
-    "campaignFund": 1000,
-    "status": "off",
-    "town": "Gdańsk",
-    "radius": 12
   }
 ]
